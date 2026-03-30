@@ -1,2 +1,11 @@
-@import url("/css/styles.css");
-@import url("/css/widgets.css");
+/* Bundled with the app so styles load under any base URL / deployment */
+@import "../public/css/styles.css";
+@import "../public/css/widgets.css";
+
+.proto-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+  min-width: 0;
+}

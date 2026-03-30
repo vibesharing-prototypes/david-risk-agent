@@ -21,7 +21,8 @@ export default function Home() {
     <>
       <div
         id="proto-root"
-        style={{ display: "contents" }}
+        className="proto-shell"
+        suppressHydrationWarning
         dangerouslySetInnerHTML={{ __html: html }}
       />
       <Script src="/js/widgets.js" strategy="afterInteractive" />
