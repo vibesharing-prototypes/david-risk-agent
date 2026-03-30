@@ -18,6 +18,7 @@ const sidebarToggle = document.getElementById("sidebarToggle");
 const sidebarToggleHost = document.getElementById("sidebarToggleHost");
 const middlePanel = document.getElementById("middlePanel");
 const middlePanelToggle = document.getElementById("middlePanelToggle");
+const middlePanelExpandToggle = document.getElementById("middlePanelExpandToggle");
 const resizeHandle = document.getElementById("resizeHandle");
 const rightPanel = document.getElementById("rightPanel");
 const middleIconRail = document.getElementById("middleIconRail");
@@ -265,6 +266,15 @@ function clearMiddleInlineFlex() {
   middlePanel.style.maxWidth = "";
 }
 
+function syncMiddleToggleButtons() {
+  const expanded = !middleCollapsed;
+  [middlePanelToggle, middlePanelExpandToggle].forEach((btn) => {
+    if (!btn) return;
+    btn.classList.toggle("is-active", expanded);
+    btn.setAttribute("aria-pressed", expanded ? "true" : "false");
+  });
+}
+
 function applyCollapsedLayout() {
   if (!middlePanel || !rightPanel || !middlePanelToggle) return;
   middlePanel.classList.add("is-hidden");
@@ -274,8 +284,7 @@ function applyCollapsedLayout() {
   if (mainRow) mainRow.classList.remove("main-row--middle-expanding");
   rightPanel.classList.add("right-panel--fill");
   rightPanel.style.width = "";
-  middlePanelToggle.classList.remove("is-active");
-  middlePanelToggle.setAttribute("aria-pressed", "false");
+  syncMiddleToggleButtons();
   syncMiddleRail();
 }
 
@@ -301,8 +310,7 @@ function expandMiddle() {
   rightPanel.classList.remove("right-panel--fill");
   rightPanelWidth = savedRightPanelWidth;
   rightPanel.style.width = `${rightPanelWidth}px`;
-  middlePanelToggle.classList.add("is-active");
-  middlePanelToggle.setAttribute("aria-pressed", "true");
+  syncMiddleToggleButtons();
 }
 
 function applySidebarState() {
@@ -410,6 +418,7 @@ function bootProtoShell() {
   applyRightWidthPx(rightPanelWidth);
   applySidebarState();
   syncDrilldownFromActiveNav();
+  syncMiddleToggleButtons();
   syncMiddleRail();
 
   if (middleIconRail) {
@@ -427,10 +436,14 @@ function bootProtoShell() {
     applySidebarState();
   });
 
-  middlePanelToggle.addEventListener("click", () => {
+  function onMiddlePanelToggleClick() {
     if (middleCollapsed) expandMiddle();
     else collapseMiddle();
-  });
+  }
+  middlePanelToggle.addEventListener("click", onMiddlePanelToggleClick);
+  if (middlePanelExpandToggle) {
+    middlePanelExpandToggle.addEventListener("click", onMiddlePanelToggleClick);
+  }
 
   function scheduleDragMove(clientX) {
     dragPendingX = clientX;

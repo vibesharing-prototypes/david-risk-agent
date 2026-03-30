@@ -254,14 +254,46 @@ html, body {
 .mir-inner {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: var(--space-0-5);
-  padding: var(--space-1) 0;
+  align-items: stretch;
   height: 100%;
   min-height: 0;
+}
+.mir-top-row {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 10px 0 8px;
+}
+.mir-top-row .tb-btn {
+  margin: 0;
+}
+.mir-groups {
+  flex: 1 1 auto;
+  min-height: 0;
   overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-0-5);
+  padding: 0 0 var(--space-1);
   scrollbar-width: thin;
   scrollbar-color: var(--color-ui-scrollbar-handle) transparent;
+}
+.mir-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-0-5);
+  width: 100%;
+}
+.mir-sep {
+  flex-shrink: 0;
+  width: 32px;
+  height: 1px;
+  margin: var(--space-0-5) auto;
+  border: none;
+  background: var(--color-ui-divider-default);
 }
 .mir-btn {
   width: 40px;
@@ -341,18 +373,25 @@ html, body {
   min-height: 0;
 }
 
-/* Sidebar layout toggle — top-right of nav column (not global topbar) */
+/* Sidebar collapse control — top-left of nav column */
 .sb-top-row {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: flex-start;
   flex-shrink: 0;
   padding: 10px 0 12px;
 }
 .sidebar.is-collapsed .sb-top-row {
-  justify-content: center;
+  justify-content: flex-start;
   padding-left: 0;
   padding-right: 0;
+}
+
+/* Section separators when sidebar is icon-only (labels hidden) */
+.sidebar.is-collapsed .sb-nav .sb-section:not(:first-child) {
+  border-top: 1px solid var(--color-ui-divider-default);
+  padding-top: var(--space-1);
+  margin-top: var(--space-0-5);
 }
 
 .sb-module {
@@ -534,7 +573,7 @@ html, body {
 .mp-header {
   display: flex;
   align-items: flex-start;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: var(--space-2);
   padding: 24px 24px 20px;
   flex-shrink: 0;
@@ -542,6 +581,7 @@ html, body {
 .mp-title {
   flex: 1 1 auto;
   min-width: 0;
+  padding-top: 2px;
   font-size: var(--type-title-h3-lg-size);
   font-weight: var(--type-title-h3-lg-weight);
   line-height: var(--type-title-h3-lg-line-height);
@@ -550,7 +590,7 @@ html, body {
 }
 .mp-header .tb-btn {
   flex-shrink: 0;
-  margin-top: 2px;
+  margin: 0;
 }
 
 /* ── Right panel (single column) ── */
