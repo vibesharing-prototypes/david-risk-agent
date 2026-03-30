@@ -1,0 +1,21 @@
+# Git
+.git
+.gitignore
+
+# Dependencies & build (rebuilt in image)
+node_modules
+.next
+
+# Env (inject at runtime in your platform)
+.env
+.env.*
+!.env.example
+
+# Dev / OS
+*.md
+.DS_Store
+.vscode
+.idea
+
+# CI (not needed in image)
+.github

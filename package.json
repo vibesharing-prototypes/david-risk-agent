@@ -8,6 +8,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
+    "docker:build": "docker build -t ai-first-riskv2 .",
+    "docker:run": "docker run --rm -p 3000:3000 ai-first-riskv2",
     "mcp:vibesharing": "claude mcp add vibesharing -e VIBESHARING_TOKEN=${VIBESHARING_TOKEN} -- npx -y @vibesharingapp/mcp-server"
   },
   "dependencies": {
