@@ -12,6 +12,8 @@ out/
 
 # OS / IDE
 .DS_Store
+*.swp
+*.swo
 *.log
 .idea/
 .vscode/
