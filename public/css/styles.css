@@ -1,96 +1,11 @@
 /* ============================================================
    Risk Management Prototype — styles.css
-   Atlas Design System — Dark theme tokens + layout
+   Atlas colors: public/css/atlas-dark.css (+ tokens JSON)
    ============================================================ */
 
+@import "./atlas-dark.css";
+
 :root {
-  /* ── Primitive colour scales ── */
-  --storm-5:   #0A1020;
-  --storm-10:  #151B2C;
-  --storm-15:  #1F2536;
-  --storm-20:  #2A3041;
-  --storm-25:  #353B4D;
-  --storm-30:  #404659;
-  --storm-35:  #4C5265;
-  --storm-40:  #585E71;
-  --storm-50:  #71768B;
-  --storm-60:  #8A90A5;
-  --storm-70:  #A5ABC0;
-  --storm-80:  #C0C6DC;
-  --storm-90:  #DCE2F9;
-  --storm-95:  #EEF0FF;
-  --storm-98:  #FAF8FF;
-  --storm-99:  #FEFBFF;
-  --sky-5:    #00131E;
-  --sky-15:   #00293C;
-  --sky-70:   #00B7FC;
-  --sky-80:   #83CFFF;
-  --sky-90:   #C6E7FF;
-  --sky-95:   #E4F3FF;
-  --color-white: #FFFFFF;
-  --red-60:   #FF5450;
-  --red-70:   #FF8981;
-  --moss-60:  #00A661;
-  --yellow-80: #DEC800;
-  --flamingo-60: #F45695;
-  --indigo-60: #6B89FF;
-  --indigo-70: #92A6FF;
-
-  /* ── Semantic colour tokens ── */
-  --color-type-default:   #FFFFFF;
-  --color-type-muted:     #8A90A5;
-  --color-type-disabled:  #71768B;
-  --color-action-primary-default:              #00B7FC;
-  --color-action-primary-default-grad-start:   #83CFFF;
-  --color-action-primary-hover-grad-start:     #C6E7FF;
-  --color-action-primary-disabled:             #4C5265;
-  --color-action-primary-on-primary:           #00293C;
-  --color-action-secondary-hover:              #2A3041;
-  --color-action-secondary-active:             #71768B;
-  --color-action-secondary-on-secondary:       #FFFFFF;
-  --color-action-secondary-outline:            #71768B;
-  --color-action-secondary-outline-disabled:   #4C5265;
-  --color-action-ai-default-grad-start:        #F45695;
-  --color-action-ai-default-grad-end:          #6B89FF;
-  --color-selection-primary-default:           #353B4D;
-  --color-selection-primary-hover:             #2A3041;
-  --color-selection-primary-active:            #0A1020;
-  --color-selection-primary-on-selected:       #00B7FC;
-  --color-selection-primary-indicator:         #00B7FC;
-  --color-ui-divider-default:                  #4C5265;
-  --color-ui-divider-secondary:                #8A90A5;
-  --color-ui-scrollbar-handle:                 #8A90A5;
-  --color-ui-focus-main:                       #FFFFFF;
-  --color-background-base:                     #1F2536;
-  --color-background-base-grad-start:          #0A1020;
-  --color-background-base-grad-end:            #151B2C;
-  --color-surface-default:                     #1F2536;
-  --color-surface-variant:                     #353B4D;
-  --color-surface-variant-subtle:              #2A3041;
-  --color-outline-static:                      #404659;
-  --color-outline-default:                     #71768B;
-  --color-outline-hover:                       #A5ABC0;
-  --color-outline-active:                      #FFFFFF;
-  --color-outline-disabled:                    #4C5265;
-  --color-status-success-default:              #00A661;
-  --color-status-success-background:           #004525;
-  --color-status-success-content:              #C2FFD2;
-  --color-status-warning-default:              #DEC800;
-  --color-status-warning-background:           #443C00;
-  --color-status-warning-content:              #FFF2AA;
-  --color-status-error-default:                #FF5450;
-  --color-status-error-background:             #540006;
-  --color-status-notification-default:         #83CFFF;
-  --color-status-notification-background:      #00405B;
-  --color-status-neutral-background-default:   #8A90A5;
-  --color-status-neutral-background-variant:   #404659;
-  --color-status-neutral-content-variant:      #C0C6DC;
-  --color-accent-highlighted-background:       #404659;
-  --color-accent-blue-background:              #1C4EE4;
-  --color-ai-grad-start:                       #FF8981;
-  --color-ai-grad-middle:                      #DB8BFF;
-  --color-ai-grad-end:                         #92A6FF;
-
   /* ── Spacing scale ── */
   --space-0:    0px;
   --space-px:   1px;
@@ -161,7 +76,12 @@ html, body {
   width: 100%;
   height: 100vh;
   overflow: hidden;
-  background: var(--color-surface-variant);
+  /* Atlas Color.Background — base vertical gradient (app chrome) */
+  background: linear-gradient(
+    180deg,
+    var(--color-background-base-grad-start) 0%,
+    var(--color-background-base-grad-end) 100%
+  );
   font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
